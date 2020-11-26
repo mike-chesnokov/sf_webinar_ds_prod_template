@@ -3,19 +3,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-MODEL_FILE = '_webinar_model.pkl'
-FEATURE_ORDER_FILE = '_feature_order.pkl'
-TEST_DATA_FILE = '_test_data.pkl'
-
-# Загружаем сериализованные объекты
-# Обученная модель
-# Лист с порядком признаков
-# Признаки для тестового датасета
-
-
-# ******** НИЖЕ НАПИШИТЕ КОД ЗАГРУЗКИ ТРЕХ СЕРИАЛИЗОВАННЫХ ОБЪЕКТОВ
-# ........
-
 
 # Flask метод для проверки работы сервера, требования:
 # Ендпойнт: "/hello"
@@ -35,6 +22,20 @@ TEST_DATA_FILE = '_test_data.pkl'
 #
 # url = http://localhost:8000/hello?param=python
 # response = {'param': 'python', 'result': 'SERVER OK'}
+
+
+MODEL_FILE = '_webinar_model.pkl'
+FEATURE_ORDER_FILE = '_feature_order.pkl'
+TEST_DATA_FILE = '_test_data.pkl'
+
+# Загружаем сериализованные объекты
+# Обученная модель
+# Лист с порядком признаков
+# Признаки для тестового датасета
+
+
+# ******** НИЖЕ НАПИШИТЕ КОД ЗАГРУЗКИ ТРЕХ СЕРИАЛИЗОВАННЫХ ОБЪЕКТОВ
+# ........
 
 
 # ******** НИЖЕ НАПИШИТЕ КОД FLASK МЕТОДА ДЛЯ ПРОВЕРКИ РАБОТЫ СЕРВЕРА
