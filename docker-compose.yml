@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  flask_app:
+    # Собираем контейнер с приложением с помощью uwsgi.Dockerfile
+    # Присваеваем имя контейнера "flask_app"
+
+    # ******** НИЖЕ НАПИШИТЕ КОД ВЫПОЛНЯЮЩИЙ 2 ДЕЙСТВИЯ ОПИСАННЫЕ ВЫШЕ
+    ## ........
+
+
+  nginx_server:
+    build:
+      context: ./nginx
+    ports:
+      - 8000:8000
+    container_name: nginx_server
+
