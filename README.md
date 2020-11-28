@@ -30,8 +30,8 @@ pickle, flask, uwsgi, docker, nginx, docker-compose.
 Для работы с проектом локально нужно иметь на своем компьютере:
 - Git
 - Pycharm / VSCode для работы с кодом
-- docker
-- docker-compose
+- docker ([установка](https://docs.docker.com/engine/install/ubuntu/))
+- docker-compose ([установка](https://docs.docker.com/compose/install/))
 - python библиотеки (для локальной работы, не в docker контейнере)
     - numpy==1.19.4
     - pandas==1.1.4
