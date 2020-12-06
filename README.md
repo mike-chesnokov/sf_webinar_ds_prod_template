@@ -1,7 +1,11 @@
 # Проект для практического вебинара DS Prod
 Вебинар состоит из одного проекта (задачи) разбитого на несколько заданий,
 которые покрывают следующие темы из курса DS Prod:
-pickle, flask, uwsgi, docker, nginx, docker-compose.
+
+- Сериализация в python: pickle (модуль `Подготовка модели к Production`) 
+- Создание flask приложения (модуль `Модели ML в Production`)
+- docker контейнеры (модуль `Контейнеризация приложений`)
+- docker-compose (модуль `Сервисная архитектура и оркестрация приложений`)
 
 ## Введение
 Для нашей задачи мы будем использовать датасет [California Housing](https://scikit-learn.org/stable/datasets/index.html#california-housing-dataset),
@@ -26,25 +30,95 @@ pickle, flask, uwsgi, docker, nginx, docker-compose.
 
 
 ## Пререквезиты для вебинара
-
+### Что установить / настроить
 Для работы с проектом локально нужно иметь на своем компьютере:
-- Git
+- Git (установка на Ubuntu `sudo apt-get install git`)
 - Pycharm / VSCode для работы с кодом
-- docker ([установка](https://docs.docker.com/engine/install/ubuntu/))
+- docker ([установка](https://docs.docker.com/engine/install/ubuntu/), 
+  [мануал](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-ru))
 - docker-compose ([установка](https://docs.docker.com/compose/install/))
-- python библиотеки (для локальной работы, не в docker контейнере)
-    - numpy==1.19.4
-    - pandas==1.1.4
-    - scikit-learn==0.23.2
-    - flask==1.1.2
-    - requests==2.25.0
+- python библиотеки (для локальной работы, не в docker контейнере), 
+  лучше установить в новое виртуальное окружение (`venv`):  
+```
+# Создаем новое виртуальное окружение "my_env" в удобной для вас папке "dir_for_venv"
+
+cd <dir_for_venv>
+python3 -m venv my_env
+
+# Активируем виртуальное окружение "my_env"
+
+source my_env/bin/activate
+
+# Проверяем какие пакеты установлены в новом виртуальном окружении
+
+pip list
+
+# Устанавливаем все необходимые пакеты
+pip install numpy==1.19.4
+pip install pandas==1.1.4
+pip install scikit-learn==0.23.2
+pip install flask==1.1.2
+pip install requests==2.25.0
+```
+
+### Клонирование репозитория
+Перед началом вебинара нужно сделать fork [репозитория с проектом](https://github.com/mike-chesnokov/sf_webinar_ds_prod_template),
+для этого:
+- Создать аккаунт на GitHub (если его нет)
+- Перейти в репозиторий шаблона проекта на GitHub по ссылке выше 
+- Справа сверху будет кнопка “Fork” - нажимаете ее и репозиторий копируется в ваш профиль
+- Далее клонируете репозиторий к себе на локальный компьютер, 
+  для этого в вашей копии репозитория (ВАЖНО, что в вашей копии не в основной!) 
+  нажимаете зеленую кнопку “Code” и выбираете одну из ссылок для клонирования либо по HTTPS, либо по SSH.
+  SSH требует настройки ssh ключей, 
+  а HTTPS будет просить ввести пароль от вашего github профиля. 
+
+- Какой тип [ссылки выбрать](https://docs.github.com/en/free-pro-team@latest/github/using-git/which-remote-url-should-i-use) 
+- Как настроить [ssh ключи](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh)
+
+- у себя на локальном компьютере в любой удобной папке 
+  (где вы хотите, чтобы появился этот проект) 
+  выполняете команду git clone 
+  (строку после git clone можно скопировать из зеленой кнопки “Code”):для HTTPS:
+  
+```
+# для HTTPS
+git clone https://github.com/<YOUR_GITHUB_PROFILE>/sf_webinar_ds_prod_template.git
+
+# для SSH
+git clone git@github.com:<YOUR_GITHUB_PROFILE>/sf_webinar_ds_prod_template.git
+```
+
+
+### Что повторить
+
+Для быстрого и успешного выполнения заданий на вебинаре рекомендуется повторить 
+следующие модули курса:
+
+- `Подготовка модели к Production` (Сериализация python объектов)
+- `Модели ML в Production` (flask, uwsgi, nginx)
+- `Контейнеризация приложений` (Работа с docker: Dockerfile, build, run)
+- `Сервисная архитектура и оркестрация приложений` (Работа с docker-compose)
+
+Дополнительно к материалам курса для повторения можно посмотреть следующие ссылки:
+
+- Пример работы с [pickle](http://zetcode.com/python/pickle/)
+- Тьюториалы по flask: [раз](https://flask.palletsprojects.com/en/1.1.x/quickstart/), 
+  [два](https://habr.com/ru/post/346306/)
+- Тьюториалы по docker: [раз](https://www.youtube.com/watch?v=YFl2mCHdv24&t=463s), 
+  [два](https://docker-curriculum.com/)
+- Тьюториалы по docker-compose: [раз](https://www.youtube.com/watch?v=Qw9zlE3t8Ko),
+  [два](https://habr.com/ru/company/ruvds/blog/450312/), 
+  [три](https://www.educative.io/blog/docker-compose-tutorial)
+- Примеры flask + uwsgi + docker + nginx: [раз](http://snakeproject.ru/rubric/article.php?art=docker_flask_06.02.2019),
+  [два](https://smirnov-am.github.io/running-flask-in-production-with-docker/),
+  [три](https://pythonise.com/series/learning-flask/building-a-flask-app-with-docker-compose)
 
 
 ## План решения задачи
 Перед началом выполнения заданий предлагается прикинуть примерный 
 план решения нашей задачи:
 - Какие шаги мы будем проходить?
-- Какие технологии / библиотеки будем использовать?
 
 ## Задания
 В каждом задании необходимо заполнить недостающие фрагменты кода 
@@ -57,6 +131,8 @@ pickle, flask, uwsgi, docker, nginx, docker-compose.
 на трейне обучаем модель LinearRegression из sklearn.
 Для сравнения друг с другом измеряем метрику MSE на тесте. 
 Также мы сериализуем саму модель и тест данные 
+(таргет с теста не сериализуем, т.к. 
+при реальном применении модели у нас не будет ответов на новых данных)
 для использования во время инференса модели в дальнейшем.
  
  
